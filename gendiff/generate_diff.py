@@ -5,8 +5,7 @@ import json
 def generate_diff(path_to_file1, path_to_file2, out_format):
     with open(path_to_file1, 'r', encoding='utf-8') as datum1:
         dict1 = json.load(datum1)
-        return dict1
-    with open(path_to_file2.json, 'r', encoding='utf-8') as datum2:
+    with open(path_to_file2, 'r', encoding='utf-8') as datum2:
         dict2 = json.load(datum2)
 
     dct3 = {}
