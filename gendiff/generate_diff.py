@@ -23,11 +23,10 @@ def generate_diff(path_to_file1, path_to_file2, out_format):
     for i in sorted(dict2):
         if i not in sorted(dict1):
             dct3[f'+ {i}'] = dict2[i]
-    return dct3    
-    out_file = open(fixtures/result.json, "w")
+
+    out_file = open('gendiff/fixtures/result.json', "w")
     json.dump(dct3, out_file, indent = 4, sort_keys = False)
     out_file.close()
 
-    with open(fixtures/result.json, 'r', encoding='utf-8') as datum3:
-        for i in datum3.readlines():
-            return i.strip()
+    with open('gendiff/fixtures/result.json', 'r', encoding='utf-8') as datum3:
+        return datum3.readlines()
