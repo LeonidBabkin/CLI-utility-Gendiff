@@ -9,3 +9,7 @@ start:
 
 lint:
 	poetry run flake8 gendiff
+test:
+	poetry run coverage run --source=gendiff -m pytest tests
+
+.PHONY: build reinstall start lint test
