@@ -1,14 +1,33 @@
 
 name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 jobs:
-  check-bats-version:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9]
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version}}
+        uses: actions/setup-python@v2
         with:
-         node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+          python-version: ${{ matrix.python-version }}
+      - name: Run reinstall
+        run: make reinstall
+      - name: Run linter
+        run: make lint
+      - name: Run tests
+        run: make test
+      - name: Publish code coverage
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: 968c79bf9ebc606ca7b66c236a45d967990e20a0b82cb6be51164cdb97215615
+        with:
+          coverageCommand: make cc-cover 
+
