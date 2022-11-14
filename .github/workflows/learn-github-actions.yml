@@ -1,5 +1,5 @@
 me: learn-github-actions
-run-name: ${{ }} is learning GitHub Actions
+run-name: my-own-check
 on: [push]
 jobs:
   check-bats-version:
