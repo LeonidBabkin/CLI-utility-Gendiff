@@ -20,10 +20,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Run reinstall
         run: make reinstall
-      - name: Run linter
-        run: make lint
-      - name: Run tests
-        run: make test
+        # - name: Run linter
+        # run: make lint
+        # - name: Run tests
+        # run: make test
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v3.0.0
         env:
