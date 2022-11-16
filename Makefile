@@ -1,6 +1,9 @@
 build:
 	poetry build
 
+install:
+	poetry install
+
 reinstall:
 	pip install --user --force-reinstall dist/*.whl
 
@@ -9,10 +12,11 @@ start:
 
 lint:
 	poetry run flake8 gendiff
+
 test:  
 	poetry run coverage run --source=gendiff -m pytest tests
 
 cc-cover:
 	poetry run coverage xml
  
-.PHONY: build reinstall start lint test
+.PHONY: build install reinstall start lint test

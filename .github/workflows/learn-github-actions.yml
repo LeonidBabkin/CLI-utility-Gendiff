@@ -18,12 +18,14 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Run reinstall
-        run: make reinstall
-        # - name: Run linter
-        # run: make lint
-        # - name: Run tests
-        # run: make test
+      - name: Install dependecies
+        run: |
+          pip install poetry
+          make install
+      - name: Run linter
+        run: make lint
+      - name: Run tests
+        run: make test
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v3.0.0
         env:

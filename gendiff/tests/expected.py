@@ -10,4 +10,3 @@ JSON_STRING = '''{
   + timeout: 20
   + verbose: true
 }'''
-
