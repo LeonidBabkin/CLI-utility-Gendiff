@@ -18,5 +18,8 @@ test:
 
 cc-cover:
 	poetry run coverage xml
- 
-.PHONY: build install reinstall start lint test
+
+report-coverage:
+	poetry run coverage report
+
+.PHONY: build install reinstall start lint test report-coverage
