@@ -1,4 +1,5 @@
 import json
+from gendiff.parser import parsing
 
 
 def dct(dict1, dict2):
@@ -19,10 +20,7 @@ def dct(dict1, dict2):
 
 
 def generate_diff(path_to_file1, path_to_file2, out_format):
-    with open(path_to_file1, 'r', encoding='utf-8') as datum1:
-        dict1 = json.load(datum1)
-    with open(path_to_file2, 'r', encoding='utf-8') as datum2:
-        dict2 = json.load(datum2)
+    dict1, dict2 = parsing(path_to_file1, path_to_file2)
     dict3 = dct(dict1, dict2)
     path = 'gendiff/fixtures/result.json'
     out_file = open(path, "w")
