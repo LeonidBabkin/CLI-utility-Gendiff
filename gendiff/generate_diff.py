@@ -10,4 +10,4 @@ def generate_diff(path_to_file1, path_to_file2, output_format='stylish'):
         result = build_stylish(result_tree)
     else:
         result = build_stylish(result_tree)
-    return result
+    return result.strip()
