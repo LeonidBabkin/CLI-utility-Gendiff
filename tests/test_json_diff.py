@@ -8,7 +8,7 @@ import tests.expected as expected
 
 def test_json():
     result = generate_diff(
-            './gendiff/fixtures/file1.json',
-            './gendiff/fixtures/file2.json',
+            './gendiff/fixtures/big1.json',
+            './gendiff/fixtures/big2.json',
             'string')
-    assert result == expected.JSON_STRING
+    assert result == expected.BIG_STRING
