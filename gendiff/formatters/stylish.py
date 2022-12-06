@@ -34,7 +34,7 @@ def build_stylish(data, depth=0):
             tree.append(f'{INDENT * depth}  {i["state"]} {i["key"]}: ')
             tree.append(get_descendants(i['value'], depth + 4))
         else:
-            tree.append(f'{INDENT * depth}  {i["state"]} {i["key"]}: ' \
-                    f'{gain_value(i["value"])}\n')
+            tree.append(f'{INDENT * depth}  {i["state"]} {i["key"]}: '
+                        f'{gain_value(i["value"])}\n')
     tree.append(((INDENT * depth) + '}' + '\n'))
     return ''.join(tree)
