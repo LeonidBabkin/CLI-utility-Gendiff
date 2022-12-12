@@ -15,13 +15,15 @@ def make_plainish(dct):
         if len(value) == 2:
             if value[1] == 'added':
                 finale.append(f'Property \'{key}\''
-                              f' was added with value: {turn_value(value[0])}')
+                              f' was added with value:'
+                              f'{turn_value(value[0])}')
             elif value[1] == 'removed':
                 finale.append(f'Property \'{key}\' was removed')
         elif len(value) > 2:
             if value[3] == 'added':
                 finale.append(f'Property \'{key}\' was updated.'
-                              f'From {turn_value(value[0])} to {turn_value(value[2])}')
+                              f'From {turn_value(value[0])}'
+                              f'to {turn_value(value[2])}')
     return '\n'.join(finale)
 
 
@@ -31,7 +33,7 @@ def make_dict(datum):
         i = i.split('.')
         key = '.'.join(i[: -2])
         if key in dct:
-            dct[key].extend(i[-2 :])       
+            dct[key].extend(i[-2:])
             dct.update({key: dct[key]})
         else:
             if '{' and '}' in i[-2:][0]:
@@ -45,7 +47,7 @@ def make_list(datum):
     lst = []
     for i in datum:
         if '[' and ']' in i:
-            one, two = i.index('[') + 1, i.index(']')        
+            one, two = i.index('[') + 1, i.index(']')
             string = i[one:two]
             string = string.split(',')
             for j in string:
@@ -65,11 +67,13 @@ def descendants(data):
         if isinstance(i['descendants'], list):
             for j in i['descendants']:
                 if j['descendants'] == '':
-                    string += f'{i["key"]}.{j["key"]}.{j["value"]}.{j["state"]}'
+                    string += f'{i["key"]}.{j["key"]}.'
+                    f'{j["value"]}.{j["state"]}'
                     lst.append(string)
                     string = ''
                 else:
-                    string += f'{i["key"]}.{j["key"]}.{descendants(j["descendants"])}'
+                    string += f'{i["key"]}.{j["key"]}.'
+                    f'{descendants(j["descendants"])}'
                     lst.append(string)
                     string = ''
         else:
@@ -86,11 +90,13 @@ def build_plain(data):
         if isinstance(i['descendants'], list):
             for j in i['descendants']:
                 if j['descendants'] == '':
-                    string += f'{i["key"]}.{j["key"]}.{j["value"]}.{j["state"]}'
+                    string += f'{i["key"]}.{j["key"]}.'
+                    f'{j["value"]}.{j["state"]}'
                     lst.append(string)
                     string = ''
                 else:
-                    string += f'{i["key"]}.{j["key"]}.{descendants(j["descendants"])}'
+                    string += f'{i["key"]}.{j["key"]}.'
+                    f'{descendants(j["descendants"])}'
                     lst.append(string)
                     string = ''
         else:
