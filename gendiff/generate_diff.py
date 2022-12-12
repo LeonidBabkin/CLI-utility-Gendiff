@@ -11,4 +11,4 @@ def generate_diff(path_to_file1, path_to_file2, output_format='stylish'):
         result = build_plain(ast)
     else:
         result = build_stylish(ast)
-    return result
+    return result.strip()
