@@ -6,7 +6,7 @@ def turn_value(value):
     elif value == "None":
         return 'null'
     else:
-        return f"'{value}'"
+        return f'\'{value}\''
 
 
 def make_plainish(dct):
@@ -14,16 +14,12 @@ def make_plainish(dct):
     for key, value in dct.items():
         if len(value) == 2:
             if value[1] == 'added':
-                finale.append(f'Property \'{key}\''
-                              f' was added with value:'
-                              f'{turn_value(value[0])}')
+                finale.append(f'Property \'{key}\' was added with value: {turn_value(value[0])}')
             elif value[1] == 'removed':
                 finale.append(f'Property \'{key}\' was removed')
         elif len(value) > 2:
             if value[3] == 'added':
-                finale.append(f'Property \'{key}\' was updated.'
-                              f'From {turn_value(value[0])}'
-                              f'to {turn_value(value[2])}')
+                finale.append(f'Property \'{key}\' was updated. From {turn_value(value[0])} to {turn_value(value[2])}')
     return '\n'.join(finale)
 
 
@@ -67,13 +63,11 @@ def descendants(data):
         if isinstance(i['descendants'], list):
             for j in i['descendants']:
                 if j['descendants'] == '':
-                    string += f'{i["key"]}.{j["key"]}.'
-                    f'{j["value"]}.{j["state"]}'
+                    string += f'{i["key"]}.{j["key"]}.{j["value"]}.{j["state"]}'
                     lst.append(string)
                     string = ''
                 else:
-                    string += f'{i["key"]}.{j["key"]}.'
-                    f'{descendants(j["descendants"])}'
+                    string += f'{i["key"]}.{j["key"]}.{descendants(j["descendants"])}'
                     lst.append(string)
                     string = ''
         else:
@@ -90,13 +84,11 @@ def build_plain(data):
         if isinstance(i['descendants'], list):
             for j in i['descendants']:
                 if j['descendants'] == '':
-                    string += f'{i["key"]}.{j["key"]}.'
-                    f'{j["value"]}.{j["state"]}'
+                    string += f'{i["key"]}.{j["key"]}.{j["value"]}.{j["state"]}'
                     lst.append(string)
                     string = ''
                 else:
-                    string += f'{i["key"]}.{j["key"]}.'
-                    f'{descendants(j["descendants"])}'
+                    string += f'{i["key"]}.{j["key"]}.{descendants(j["descendants"])}'
                     lst.append(string)
                     string = ''
         else:
@@ -105,5 +97,5 @@ def build_plain(data):
             string = ''
     list_ = make_list(lst)
     dict_ = make_dict(list_)
-    plain = make_plainish(dict_)
-    return plain
+    res = make_plainish(dict_)
+    return print(res)

@@ -18,7 +18,8 @@ def main():
             help='set format of output',
             )
     args = parser.parse_args()
-    return print(generate_diff(args.first_file, args.second_file, args.format))
+    diff = generate_diff(args.first_file, args.second_file, args.format)
+    print(diff)
 
 
 if __name__ == '__main__':
