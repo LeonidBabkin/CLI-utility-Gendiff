@@ -8,7 +8,6 @@ def generate_diff(path_to_file1, path_to_file2, output_format='stylish'):
     dict_before, dict_after = parsing(path_to_file1, path_to_file2)
     ast = build_ast(dict_before, dict_after)
     if output_format == 'plain':
-        result = build_plain(ast)
+        return build_plain(ast)
     else:
-        result = build_stylish(ast)
-    return result
+        return build_stylish(ast)

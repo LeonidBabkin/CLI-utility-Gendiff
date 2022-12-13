@@ -98,4 +98,4 @@ def build_plain(data):
     list_ = make_list(lst)
     dict_ = make_dict(list_)
     res = make_plainish(dict_)
-    return print(res)
+    return res
