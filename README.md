@@ -4,6 +4,15 @@
 <a href="https://codeclimate.com/github/LeonidBabkin/python-project-50/maintainability"><img src="https://api.codeclimate.com/v1/badges/975e8468cd7f19ac6fd2/maintainability" /></a>
 <a href="https://codeclimate.com/github/LeonidBabkin/python-project-50/test_coverage"><img src="https://api.codeclimate.com/v1/badges/975e8468cd7f19ac6fd2/test_coverage" /></a>
 
+Gendiff is a CLI utility for finding differences between configuration files.
+
+Suppported formats: YAML, JSON
+Report difference as a plain text, structured text or JSON
+
+Can be used as an external library.
+
+You can instal the project via pip install -i https://test.pypi.org/simple/ leonid-hexlet-code
+
 Project 2, step 3:
 https://asciinema.org/a/LqBiSl2xtXNN7VigJfUapJQKH
 
