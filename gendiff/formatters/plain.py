@@ -13,13 +13,13 @@ def make_plainish(dct):
     finale = []
     for key, value in dct.items():
         if len(value) == 2:
-            if value[1] == 'added':
+            if value[1] == '+':
                 finale.append(f'Property \'{key}\''
                               f' was added with value: {turn_value(value[0])}')
-            elif value[1] == 'removed':
+            elif value[1] == '-':
                 finale.append(f'Property \'{key}\' was removed')
         elif len(value) > 2:
-            if value[3] == 'added':
+            if value[3] == '+':
                 finale.append(f'Property \'{key}\' was updated.'
                               f' From {turn_value(value[0])}'
                               f' to {turn_value(value[2])}')
@@ -101,4 +101,4 @@ def build_plain(data):
     list_ = make_list(lst)
     dict_ = make_dict(list_)
     plain = make_plainish(dict_)
-    return plain
+    return plain.strip()
