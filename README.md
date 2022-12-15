@@ -6,12 +6,12 @@
 
 Gendiff is a CLI utility for finding differences between configuration files.
 
-Suppported formats: YAML, JSON
-Report difference as a plain text, structured text or JSON
+Suppported formats: YAML, JSON.
+The program reports difference as a plain text, structured text or JSON
 
 Can be used as an external library.
 
-You can instal the project via pip install -i https://test.pypi.org/simple/ leonid-hexlet-code
+You can install the project via pip install -i https://test.pypi.org/simple/ leonid-hexlet-code
 
 Project 2, step 3:
 https://asciinema.org/a/LqBiSl2xtXNN7VigJfUapJQKH
