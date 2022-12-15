@@ -97,5 +97,5 @@ def build_plain(data):
             string = ''
     list_ = make_list(lst)
     dict_ = make_dict(list_)
-    res = make_plainish(dict_)
-    return res
+    plain = make_plainish(dict_)
+    return plain
