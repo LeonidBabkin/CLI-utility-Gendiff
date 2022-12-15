@@ -4,6 +4,7 @@ from gendiff.formatters.stylish import build_stylish
 from gendiff.formatters.plain import build_plain
 from gendiff.formatters.json import build_json
 
+
 def generate_diff(path_to_file1, path_to_file2, output_format='stylish'):
     dict_before, dict_after = parsing(path_to_file1, path_to_file2)
     ast = build_ast(dict_before, dict_after)

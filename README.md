@@ -6,5 +6,15 @@
 
 Project 2, step 3:
 https://asciinema.org/a/LqBiSl2xtXNN7VigJfUapJQKH
+
 Project 2, step 5
 https://asciinema.org/a/nXneXX0v3UDXJjEGrJl5h9M5y
+
+Project 2, representation of a stylish format:
+https://asciinema.org/a/h4Swze6RlXozjafnG97Nc5Wim
+
+Project 2, representation of a plain format:
+https://asciinema.org/a/3yo3H0Z6J3CQih47R6QXPNePY
+
+Project 2, representation of a json format of the AST:
+https://asciinema.org/a/1MWmtd01nVVuDY8y1H0yo0WM7
