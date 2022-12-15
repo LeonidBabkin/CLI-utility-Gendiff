@@ -14,12 +14,15 @@ def make_plainish(dct):
     for key, value in dct.items():
         if len(value) == 2:
             if value[1] == 'added':
-                finale.append(f'Property \'{key}\' was added with value: {turn_value(value[0])}')
+                finale.append(f'Property \'{key}\''
+                              f' was added with value: {turn_value(value[0])}')
             elif value[1] == 'removed':
                 finale.append(f'Property \'{key}\' was removed')
         elif len(value) > 2:
             if value[3] == 'added':
-                finale.append(f'Property \'{key}\' was updated. From {turn_value(value[0])} to {turn_value(value[2])}')
+                finale.append(f'Property \'{key}\' was updated.'
+                              f' From {turn_value(value[0])}'
+                              f' to {turn_value(value[2])}')
     return '\n'.join(finale)
 
 
@@ -56,7 +59,7 @@ def make_list(datum):
     return lst
 
 
-def descendants(data):
+def desc_ts(data):
     lst = []
     string = ''
     for i in data:
@@ -67,7 +70,7 @@ def descendants(data):
                     lst.append(string)
                     string = ''
                 else:
-                    string += f'{i["key"]}.{j["key"]}.{descendants(j["descendants"])}'
+                    string += f'{i["key"]}.{j["key"]}.{desc_ts(j["descendants"])}'
                     lst.append(string)
                     string = ''
         else:
@@ -88,7 +91,7 @@ def build_plain(data):
                     lst.append(string)
                     string = ''
                 else:
-                    string += f'{i["key"]}.{j["key"]}.{descendants(j["descendants"])}'
+                    string += f'{i["key"]}.{j["key"]}.{desc_ts(j["descendants"])}'
                     lst.append(string)
                     string = ''
         else:
