@@ -2,7 +2,7 @@
 
 """YAML files diff test."""
 
-from gendiff.gener_diff import generate_diff
+from gendiff.gendiff import generate_diff
 import tests.expected as expected
 
 
