@@ -8,13 +8,13 @@ reinstall:
 	pip install --user --force-reinstall dist/*.whl
 
 start:
-	gendiff gendiff/fixtures/file1.json gendiff/fixtures/file2.json
+	gendiff tests/fixtures/file1.json tests/fixtures/file2.json
 
 lint:
 	poetry run flake8 gendiff
 
 test:  
-	poetry run coverage run --source=gendiff -m pytest tests
+	poetry run coverage run --source=tests -m pytest tests
 
 cc-cover:
 	poetry run coverage xml
