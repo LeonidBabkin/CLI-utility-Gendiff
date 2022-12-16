@@ -7,7 +7,7 @@ import tests.expected as expected
 
 
 def test_plain():
-    result = generate_diff('./gendiff/fixtures/big1.json',
-                           './gendiff/fixtures/big2.json',
+    result = generate_diff('./tests/fixtures/big1.json',
+                           './tests/fixtures/big2.json',
                            'plain')
     assert result == expected.PLAIN
