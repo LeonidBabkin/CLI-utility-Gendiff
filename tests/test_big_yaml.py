@@ -11,4 +11,4 @@ def test_big_yaml():
             './tests/fixtures/big1.yaml',
             './tests/fixtures/big2.yaml',
             'yaml')
-    assert result == expected.BIG_YAML
+    assert result == expected.BIG_STRING
