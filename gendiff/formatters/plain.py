@@ -33,7 +33,7 @@ def make_dict(datum):
         key = '.'.join(i[: -2])
         if key in dct:
             if '{' and '}' in i[-2:][0]:
-                dct[key].extend( ['[complex value]', i[-2:][1]])
+                dct[key].extend(['[complex value]', i[-2:][1]])
                 dct.update({key: dct[key]})
             else:
                 dct[key].extend(i[-2:])
