@@ -1,41 +1,36 @@
-INDENT = ' '
-ADDED = '+'
-NESTED = ' '
-REMOVED = '-'
-UNCHANGED = ' '
-WHITESPACE = ''
-NO_DESCENDANTS = ''
-
-
-def build_node(key, state, value, descendants):
+def make_entry(key, action, value, children, old_value=''):
     return {
-            'key': key,
-            'value': value,
-            'state': state,
-            'descendants': descendants
+        'key': key,
+        'action': action,
+        'value': value,
+        'children': children,
+        'old_value': old_value,
     }
 
 
-def build_ast(dict_before, dict_after):
-    node = []
-    removed = dict_before.keys() - dict_after.keys()
-    added = dict_after.keys() - dict_before.keys()
-    keys = sorted(dict_before.keys() | dict_after.keys())
-    for key in keys:
+def build_ast(content1, content2):
+    output = []
+    removed = content1.keys() - content2.keys()
+    added = content2.keys() - content1.keys()
+    common_keys = sorted(content1.keys() | content2.keys())
+    for key in common_keys:
         if key in removed:
-            node.append(build_node(key, REMOVED, dict_before[key], NO_DESCENDANTS))
+            output.append(make_entry(key, 'removed', content1[key], ''))
         elif key in added:
-            node.append(build_node(key, ADDED, dict_after[key], NO_DESCENDANTS))
-        elif dict_before[key] == dict_after[key]:
-            node.append(build_node(key, UNCHANGED, dict_before[key], NO_DESCENDANTS))
+            output.append(make_entry(key, 'added', content2[key], '',
+                                     content2[key]))
+        elif content1[key] == content2[key]:
+            output.append(make_entry(key, 'same', content1[key], ''))
         else:
-            if isinstance(dict_before[key], dict) and \
-                    isinstance(dict_after[key], dict):
-                node.append(build_node(key, NESTED, WHITESPACE,
-                            build_ast(dict_before[key], dict_after[key])))
+            if isinstance(content1[key], dict) and \
+                    isinstance(content2[key], dict):
+                output.append(make_entry
+                              (key, 'nested', '',
+                               build_ast(content1[key], content2[key])))
             else:
-                node.append(
-                        build_node(key, REMOVED, dict_before[key], NO_DESCENDANTS)
-                        )
-                node.append(build_node(key, ADDED, dict_after[key], NO_DESCENDANTS))
-    return node
+                output.append(make_entry(key, 'updated', content1[key], ''))
+                output.append(make_entry(key, 'added', content2[key],
+                                         '', content1[key]))
+    return output
+
+   
