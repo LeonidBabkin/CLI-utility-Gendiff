@@ -34,5 +34,3 @@ def make_plain(tree, path=''):
 def build_plain(data):
     output = make_plain(data)
     return output
-
-

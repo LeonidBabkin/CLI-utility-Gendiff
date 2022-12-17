@@ -32,5 +32,3 @@ def build_ast(content1, content2):
                 output.append(make_entry(key, 'added', content2[key],
                                          '', content1[key]))
     return output
-
-   
