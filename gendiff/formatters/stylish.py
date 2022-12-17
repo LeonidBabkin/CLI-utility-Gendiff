@@ -1,47 +1,40 @@
-prefix_map = {
-    'added': '  + ',
-    'removed': '  - ',
-    'updated': '  - ',
-    'same': '    ',
-    'nested': '    '
-}
+from gendiff.formatters.constants import INDENT
 
 
-def make_stylish_nested_value(data, level):
-    output = ['{\n']
-    if isinstance(data, dict):
-        for i in data:
-            if not isinstance(data[i], dict):
-                output.append(f'{" " * level}    {i}: {data[i]}' + '\n')
-            else:
-                output.append(f'{" " * level}    {i}: ')
-                output.append(make_stylish_nested_value(data[i], level + 4)
-                              + '\n')
-        output.append((level * ' ') + '}')
-    elif isinstance(data, bool):
-        return str(data).lower()
-    elif data is None:
+def gain_value(value):
+    if value is True:
+        return 'true'
+    elif value is False:
+        return 'false'
+    elif value is None:
         return 'null'
     else:
-        return str(data)
-    return ''.join(output)
+        return value
 
 
-def make_stylish(data, level=0):
-    output = ['{\n']
+def get_descendants(data, depth):
+    subtree = ['{\n']
     for i in data:
-        if i['action'] == 'nested':
-            output.append(f'{" " * level}{prefix_map[i["action"]]}'
-                          f'{i["key"]}: ')
-            output.append(make_stylish(i['children'], level + 4))
+        if not isinstance(data[i], dict):
+            subtree.append(f'{INDENT * depth}    {i}: {gain_value(data[i])}\n')
         else:
-            output.append(f'{" " * level}{prefix_map[i["action"]]}{i["key"]}:'
-                          f' {make_stylish_nested_value(i["value"], level+4)}'
-                          f'\n')
-    output.append((level * ' ') + '}' + '\n')
-    return ''.join(output)
+            subtree.append(f'{INDENT * depth}    {i}: ')
+            subtree.append(get_descendants(data[i], depth + 4))
+    subtree.append(((INDENT * depth) + '}' + '\n'))
+    return ''.join(subtree)
 
 
-def build_stylish(data):
-    output = make_stylish(data)
-    return output.strip()
+def build_stylish(data, depth=0):
+    tree = ['{\n']
+    for i in data:
+        if isinstance(i['descendants'], list):
+            tree.append(f'{INDENT * depth}  {i["state"]} {i["key"]}: ')
+            tree.append(build_stylish(i['descendants'], depth + 4))
+        elif isinstance(i['value'], dict):
+            tree.append(f'{INDENT * depth}  {i["state"]} {i["key"]}: ')
+            tree.append(get_descendants(i['value'], depth + 4))
+        else:
+            tree.append(f'{INDENT * depth}  {i["state"]} {i["key"]}: '
+                        f'{gain_value(i["value"])}\n')
+    tree.append(((INDENT * depth) + '}' + '\n'))
+    return ''.join(tree)
