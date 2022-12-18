@@ -12,7 +12,7 @@ def build_node(key, state, value, descendants):
             'value': value,
             'state': state,
             'descendants': descendants
-    }
+           }
 
 
 def build_ast(dict_before, dict_after):
@@ -33,8 +33,6 @@ def build_ast(dict_before, dict_after):
                 node.append(build_node(key, NESTED, WHITESPACE,
                             build_ast(dict_before[key], dict_after[key])))
             else:
-                node.append(
-                        build_node(key, REMOVED, dict_before[key], NO_DESCENDANTS)
-                           )
+                node.append(build_node(key, REMOVED, dict_before[key], NO_DESCENDANTS))
                 node.append(build_node(key, ADDED, dict_after[key], NO_DESCENDANTS))
     return node
