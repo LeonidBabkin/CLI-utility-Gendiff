@@ -5,6 +5,8 @@ def turn_value(value):
         return str(value).lower()
     elif value == "None":
         return 'null'
+    elif value.isdigit():
+        return value
     else:
         return f'\'{value}\''
 
