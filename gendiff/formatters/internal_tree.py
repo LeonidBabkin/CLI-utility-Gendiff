@@ -8,8 +8,7 @@ NO_DESCENDANTS = ''
 
 
 def build_node(key, state, value, descendants):
-    return {
-            'key': key,
+    return {'key': key,
             'value': value,
             'state': state,
             'descendants': descendants
@@ -36,6 +35,6 @@ def build_ast(dict_before, dict_after):
             else:
                 node.append(
                         build_node(key, REMOVED, dict_before[key], NO_DESCENDANTS)
-                        )
+                           )
                 node.append(build_node(key, ADDED, dict_after[key], NO_DESCENDANTS))
     return node

@@ -12,6 +12,7 @@ def test_big_plain_json():
                            'plain')
     assert result == expected.BIG_PLAIN
 
+
 def test_small_plain_json():
     result = generate_diff('./tests/fixtures/file1.json',
                            './tests/fixtures/file2.json',
