@@ -1,5 +1,7 @@
 *.egg-info
 __pycache__
-dist/
+dist
 coverage.xml
 .coverage
+.venv
+.pytest_cache
