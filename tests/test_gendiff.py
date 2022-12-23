@@ -4,12 +4,12 @@ from tests.tests_arguments import ARGS
 from gendiff.gendiff import generate_diff
 
 
-TESTS_DIR = os.path.dirname(os.path.abspath(__file__))
-FIXTURES_PATH = f"{TESTS_DIR}/fixtures/"
+tests_directory = os.path.dirname(os.path.abspath(__file__))
+fixture_path = f"{tests_directory}/fixtures/"
 
 
 def build_fixture_path(fixture_name):
-    return f'{FIXTURES_PATH}{fixture_name}'
+    return f'{fixture_path}{fixture_name}'
 
 
 @pytest.mark.parametrize('fst_fixture, snd_fixture, format_, output', ARGS)
