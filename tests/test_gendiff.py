@@ -1,8 +1,7 @@
-import pytest
 import os
-from gendiff.gendiff import generate_diff
-from tests import expected
+import pytest
 from tests.tests_arguments import ARGS
+from gendiff.gendiff import generate_diff
 
 
 TESTS_DIR = os.path.dirname(os.path.abspath(__file__))
