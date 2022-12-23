@@ -9,7 +9,7 @@ FIXTURES_PATH = f"{TESTS_DIR}/fixtures/"
 
 
 def build_fixture_path(fixture_name):
-        return f'{FIXTURES_PATH}{fixture_name}'
+    return f'{FIXTURES_PATH}{fixture_name}'
 
 
 @pytest.mark.parametrize('fst_fixture, snd_fixture, format_, output', ARGS)
