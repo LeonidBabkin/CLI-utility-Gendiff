@@ -1,11 +1,6 @@
-import os
 import pytest
-from tests.tests_arguments import ARGS
+from tests.tests_arguments import ARGS, FIXTURE_PATH
 from gendiff.gendiff import generate_diff
-
-
-tests_directory = os.path.dirname(os.path.abspath(__file__))
-FIXTURE_PATH = f"{tests_directory}/fixtures/"
 
 
 def build_fixture_path(fixture_name):

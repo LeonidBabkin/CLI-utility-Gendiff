@@ -1,3 +1,4 @@
+import os
 import tests.expected as expected
 
 
@@ -14,3 +15,5 @@ ARGS = [('file1.json', 'file2.json', 'json', expected.SMALL_JSON),
         ('file1.yaml', 'file2.yaml', 'stylish', expected.SMALL_STRING),
         ('big1.yaml', 'big2.yaml', 'stylsih', expected.BIG_STRING),
         ]
+tests_directory = os.path.dirname(os.path.abspath(__file__))
+FIXTURE_PATH = f"{tests_directory}/fixtures/"
