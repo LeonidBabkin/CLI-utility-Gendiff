@@ -1,10 +1,11 @@
-INDENT = ' '
-ADDED = '+'
-NESTED = ' '
-REMOVED = '-'
-UNCHANGED = ' '
-WHITESPACE = ''
-NO_DESCENDANTS = ''
+from gendiff.formatters.constants import (
+        ADDED,
+        NESTED,
+        REMOVED,
+        UNCHANGED,
+        WHITESPACE,
+        NO_DESCENDANTS,
+        )
 
 
 def build_node(key, state, value, descendants):
