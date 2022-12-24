@@ -1,4 +1,4 @@
-def turn_value(value):
+def to_str(value):
     if value == '[complex value]':
         return '[complex value]'
     elif value == 'True' or value == "False":
@@ -17,14 +17,14 @@ def make_plainish(dct):
         if len(value) == 2:
             if value[1] == '+':
                 finale.append(f'Property \'{key}\''
-                              f' was added with value: {turn_value(value[0])}')
+                              f' was added with value: {to_str(value[0])}')
             elif value[1] == '-':
                 finale.append(f'Property \'{key}\' was removed')
         elif len(value) > 2:
             if value[3] == '+':
                 finale.append(f'Property \'{key}\' was updated.'
-                              f' From {turn_value(value[0])}'
-                              f' to {turn_value(value[2])}')
+                              f' From {to_str(value[0])}'
+                              f' to {to_str(value[2])}')
     return '\n'.join(finale)
 
 
