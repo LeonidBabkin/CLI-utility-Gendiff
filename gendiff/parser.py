@@ -1,6 +1,5 @@
 import json
 import yaml
-from os.path import splitext
 
 
 def parse(content, ext):
@@ -10,10 +9,3 @@ def parse(content, ext):
     elif ext == 'json':
         output = json.loads(content)
         return output
-
-
-def fetch_data(datum):
-    _, extension = splitext(datum)
-    with open(datum, 'r') as content:
-        content = content.read()
-    return parse(content, extension[1:])
