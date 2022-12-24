@@ -16,6 +16,7 @@ def parse_command_line():
                         help='set format of output',
                         )
     args = parser.parse_args()
+    return args
 
 
 def main():
