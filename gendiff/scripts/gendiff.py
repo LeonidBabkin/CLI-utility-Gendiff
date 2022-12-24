@@ -6,7 +6,7 @@ import argparse
 from gendiff.gendiff import generate_diff
 
 
-def parse_command_line():
+def main():
     parser = argparse.ArgumentParser(description='Makes files discerned')
     parser.add_argument('first_file', metavar='first_file', type=str)
     parser.add_argument('second_file', metavar='second_file', type=str)
@@ -22,4 +22,4 @@ def parse_command_line():
 
 if __name__ == '__main__':
 
-    parse_command_line()
+    main()
